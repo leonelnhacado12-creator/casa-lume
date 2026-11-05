@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Casa Lume — mobiliário, tecnologia e acessórios para a sua casa e negócio." />
+    <title>Casa Lume — Mobiliário & Mais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <style>
+      :root { --ink:#1d2b24; --moss:#315442; --leaf:#77a16b; --cream:#f7f4ed; --paper:#fffcf7; --line:#dcdcd1; --sand:#d9bc8a; --orange:#c8683d; --muted:#6e746c; }
+      * { box-sizing:border-box; }
+      html { scroll-behavior:smooth; }
+      body { margin:0; background:var(--cream); color:var(--ink); font-family:Manrope,Arial,sans-serif; line-height:1.5; }
+      a { color:inherit; text-decoration:none; }
+      button,input,textarea { font:inherit; }
+      .eyebrow { display:flex; align-items:center; gap:.55rem; font:500 .72rem/1 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.13em; color:var(--moss); }
+      .eyebrow:before { content:''; width:22px; height:1px; background:currentColor; }
+      .topbar { background:var(--ink); color:#fcfaf3; padding:.65rem max(1.25rem,calc((100vw - 1240px)/2)); font-size:.75rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+      .topbar span:last-child { opacity:.78; }
+      .site-header { position:sticky; top:0; z-index:20; background:rgba(247,244,237,.94); backdrop-filter:blur(12px); border-bottom:1px solid transparent; }
+      .site-header.scrolled { border-color:var(--line); }
+      .nav { max-width:1240px; margin:auto; min-height:76px; padding:0 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+      .brand { display:inline-flex; align-items:center; gap:.72rem; font-weight:800; letter-spacing:-.04em; font-size:1.22rem; }
+      .brand-mark { width:34px; height:34px; border-radius:50% 50% 45% 45%; position:relative; background:var(--moss); display:grid; place-items:center; color:var(--cream); font-family:'Playfair Display',serif; font-size:1.25rem; }
+      .brand-mark:after { content:''; position:absolute; width:11px; height:11px; border:1px solid var(--cream); border-radius:50%; opacity:.75; }
+      .nav-links { display:flex; align-items:center; gap:1.65rem; font-size:.84rem; font-weight:700; }
+      .nav-links a { position:relative; }
+      .nav-links a:not(.nav-cta):after { content:''; position:absolute; left:0; bottom:-7px; width:0; height:2px; background:var(--orange); transition:.2s; }
+      .nav-links a:hover:after { width:100%; }
+      .nav-cta,.button { background:var(--moss); color:#fff; padding:.84rem 1.15rem; border-radius:3px; border:1px solid var(--moss); font-size:.8rem; font-weight:800; cursor:pointer; transition:transform .2s, background .2s; display:inline-flex; gap:.65rem; align-items:center; justify-content:center; }
+      .nav-cta:hover,.button:hover { transform:translateY(-2px); background:var(--ink); }
+      .button.light { background:var(--paper); color:var(--ink); border-color:var(--paper); }
+      .button.outline { color:var(--moss); background:transparent; border-color:var(--moss); }
+      .menu-toggle { display:none; background:none; border:0; font-size:1.5rem; cursor:pointer; color:var(--ink); }
+      .hero { max-width:1240px; min-height:598px; margin:auto; padding:4.4rem 1.25rem 3rem; display:grid; grid-template-columns:1.02fr .98fr; gap:3.4rem; align-items:center; }
+      .hero-copy { padding:1rem 0; }
+      h1,h2,h3,p { margin-top:0; }
+      h1 { font-family:'Playfair Display',serif; font-size:clamp(3.2rem,6.2vw,5.9rem); font-weight:600; line-height:.96; letter-spacing:-.065em; margin:.95rem 0 1.4rem; max-width:650px; }
+      h1 em { color:var(--orange); font-weight:600; }
+      .hero-copy > p { color:var(--muted); max-width:500px; font-size:1rem; }
+      .hero-actions { display:flex; gap:.8rem; flex-wrap:wrap; margin-top:2rem; }
+      .trust-row { display:flex; gap:1.7rem; margin-top:3.6rem; padding-top:1.5rem; border-top:1px solid var(--line); }
+      .trust-row b { display:block; font-size:.78rem; }
+      .trust-row span { display:block; color:var(--muted); font-size:.71rem; margin-top:.18rem; }
+      .hero-visual { height:505px; position:relative; }
+      .hero-image { width:86%; height:100%; object-fit:cover; border-radius:140px 140px 4px 4px; display:block; filter:saturate(.78); }
+      .hero-stamp { position:absolute; top:8%; right:0; width:133px; height:133px; border-radius:50%; background:var(--sand); display:grid; place-items:center; text-align:center; transform:rotate(12deg); font:500 .68rem/1.35 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.07em; }
+      .hero-stamp span { font-family:'Playfair Display',serif; font-size:1.6rem; display:block; margin:.2rem 0; letter-spacing:-.08em; }
+      .hero-note { position:absolute; bottom:28px; left:-25px; background:var(--paper); border-left:3px solid var(--orange); padding:1rem 1.25rem; box-shadow:0 12px 30px rgba(29,43,36,.11); font-size:.78rem; }
+      .hero-note strong { display:block; font-size:.88rem; }
+      .marquee { overflow:hidden; background:var(--moss); color:var(--cream); white-space:nowrap; padding:1rem 0; }
+      .marquee-track { display:inline-block; animation:scroll 30s linear infinite; font:500 .78rem 'DM Mono',monospace; letter-spacing:.08em; text-transform:uppercase; }
+      .marquee i { color:var(--sand); padding:0 1.9rem; font-style:normal; }
+      @keyframes scroll { to { transform:translateX(-50%); } }
+      section { padding:6.8rem max(1.25rem,calc((100vw - 1240px)/2)); }
+      .section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-bottom:2.4rem; }
+      h2 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,4vw,3.65rem); line-height:1.04; letter-spacing:-.055em; margin:.65rem 0 0; font-weight:600; }
+      .section-head p { max-width:400px; color:var(--muted); font-size:.9rem; margin:0; }
+      .categories { background:var(--paper); }
+      .category-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+      .category { min-height:276px; position:relative; overflow:hidden; border-radius:4px; cursor:pointer; display:flex; align-items:end; padding:1.35rem; color:#fff; isolation:isolate; }
+      .category:before { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(0deg,rgba(16,27,21,.75),rgba(16,27,21,.03) 65%); }
+      .category img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2; transition:transform .5s; }
+      .category:hover img { transform:scale(1.06); }
+      .category h3 { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:600; margin:0; letter-spacing:-.045em; }
+      .category span { font:500 .66rem 'DM Mono',monospace; display:block; margin-top:.35rem; opacity:.85; text-transform:uppercase; letter-spacing:.08em; }
+      .catalogue { background:var(--cream); }
+      .catalogue-tools { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1.5rem; }
+      .filters { display:flex; gap:.5rem; flex-wrap:wrap; }
+      .filter { border:1px solid var(--line); color:var(--muted); background:transparent; border-radius:100px; padding:.53rem .85rem; font-weight:700; font-size:.72rem; cursor:pointer; }
+      .filter.active,.filter:hover { color:#fff; background:var(--moss); border-color:var(--moss); }
+      .search { position:relative; width:220px; }
+      .search input { width:100%; border:1px solid var(--line); border-radius:3px; padding:.68rem 2.2rem .68rem .8rem; color:var(--ink); background:var(--paper); font-size:.76rem; outline:none; }
+      .search:after { content:'⌕'; position:absolute; right:.75rem; top:.36rem; color:var(--moss); font-size:1.25rem; }
+      .product-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
+      .product-card { background:var(--paper); border:1px solid transparent; transition:transform .25s,box-shadow .25s; }
+      .product-card:hover { transform:translateY(-5px); box-shadow:0 16px 32px rgba(29,43,36,.10); border-color:var(--line); }
+      .product-image { height:232px; overflow:hidden; position:relative; background:#e8e5dd; }
+      .product-image img { width:100%; height:100%; object-fit:cover; transition:transform .35s; filter:saturate(.83); }
+      .product-card:hover .product-image img { transform:scale(1.04); }
+      .product-tag { position:absolute; top:10px; left:10px; background:var(--paper); padding:.35rem .5rem; color:var(--moss); font:500 .58rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.07em; }
+      .quick-view { position:absolute; right:10px; bottom:10px; background:var(--ink); color:#fff; border:0; width:35px; height:35px; border-radius:50%; font-size:1rem; cursor:pointer; }
+      .product-info { padding:1rem; }
+      .product-code { color:var(--muted); font:500 .63rem 'DM Mono',monospace; letter-spacing:.05em; text-transform:uppercase; }
+      .product-info h3 { font-family:'Playfair Display',serif; font-weight:600; font-size:1.35rem; letter-spacing:-.04em; margin:.28rem 0 .5rem; }
+      .availability { color:var(--moss); font-size:.69rem; font-weight:800; }
+      .availability:before { content:'●'; color:var(--leaf); margin-right:.4rem; }
+      .view-all { margin:2rem auto 0; display:flex; width:max-content; }
+      .store { background:var(--ink); color:var(--cream); display:grid; grid-template-columns:.9fr 1.1fr; gap:4rem; align-items:center; }
+      .store .eyebrow { color:var(--sand); }
+      .store h2 { color:#fff; }
+      .store-copy > p { color:#c8d1c9; max-width:440px; margin:1rem 0 2rem; font-size:.92rem; }
+      .store-details { border-top:1px solid rgba(255,255,255,.2); }
+      .detail { padding:1rem 0; border-bottom:1px solid rgba(255,255,255,.2); display:grid; grid-template-columns:105px 1fr; gap:1rem; font-size:.82rem; }
+      .detail b { color:var(--sand); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; }
+      .store-media { min-height:465px; position:relative; }
+      .store-media .main-photo { width:84%; height:440px; object-fit:cover; border-radius:2px 2px 90px 2px; filter:saturate(.72); }
+      .map-card { position:absolute; right:0; bottom:0; background:var(--paper); color:var(--ink); width:245px; padding:1rem; box-shadow:0 15px 35px rgba(0,0,0,.28); }
+      .map-graphic { height:105px; margin-bottom:.75rem; background-color:#e7e0cf; background-image:linear-gradient(90deg,transparent 47%,#fff 47%,#fff 53%,transparent 53%),linear-gradient(0deg,transparent 40%,#d7c8b0 40%,#d7c8b0 48%,transparent 48%),linear-gradient(55deg,transparent 47%,#fff 47%,#fff 52%,transparent 52%); position:relative; overflow:hidden; }
+      .pin { position:absolute; left:52%; top:44%; transform:translate(-50%,-100%); color:var(--orange); font-size:1.8rem; }
+      .map-card strong { font-size:.79rem; display:block; }
+      .map-card span { color:var(--muted); font-size:.68rem; }
+      .services { background:var(--paper); }
+      .service-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+      .service { padding:1.6rem; border-right:1px solid var(--line); border-bottom:1px solid var(--line); min-height:165px; }
+      .service-icon { font-size:1.4rem; color:var(--orange); }
+      .service h3 { margin:.75rem 0 .35rem; font-size:.9rem; }
+      .service p { color:var(--muted); margin:0; font-size:.75rem; }
+      .contact { display:grid; grid-template-columns:.9fr 1.1fr; gap:5rem; }
+      .contact-intro p { color:var(--muted); max-width:390px; margin:1rem 0 1.8rem; }
+      .contact-channels { display:grid; gap:.65rem; }
+      .contact-channels a { border-bottom:1px solid var(--line); padding:.65rem 0; font-size:.82rem; font-weight:700; display:flex; justify-content:space-between; }
+      .contact-channels a span { color:var(--orange); }
+      .contact-form { background:var(--paper); padding:2rem; border:1px solid var(--line); }
+      .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+      label { display:block; font-size:.7rem; font-weight:800; margin-bottom:1rem; }
+      input,textarea { display:block; width:100%; border:0; border-bottom:1px solid var(--line); background:transparent; padding:.6rem 0; margin-top:.3rem; color:var(--ink); outline:none; }
+      input:focus,textarea:focus { border-color:var(--moss); }
+      textarea { resize:vertical; min-height:84px; }
+      .form-status { min-height:1.3em; color:var(--moss); font-size:.75rem; margin:.8rem 0 0; font-weight:700; }
+      footer { background:#142019; color:#e5e5da; padding:3rem max(1.25rem,calc((100vw - 1240px)/2)) 1.2rem; }
+      .footer-top { display:flex; justify-content:space-between; gap:2rem; padding-bottom:2.3rem; }
+      footer .brand { color:#fff; }
+      .footer-copy { font-size:.78rem; color:#b6c0b7; max-width:320px; margin:.7rem 0 0; }
+      .footer-links { display:flex; gap:3rem; font-size:.76rem; }
+      .footer-links div { display:grid; align-content:start; gap:.5rem; }
+      .footer-links b { color:var(--sand); font:500 .62rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.25rem; }
+      .footer-bottom { border-top:1px solid rgba(255,255,255,.15); padding-top:1rem; display:flex; justify-content:space-between; color:#96a49a; font-size:.65rem; }
+      .whatsapp-float { position:fixed; right:1.4rem; bottom:1.4rem; width:52px; height:52px; display:grid; place-items:center; background:#25d366; color:#fff; border-radius:50%; box-shadow:0 6px 20px rgba(37,211,102,.32); z-index:15; font-weight:800; font-size:.65rem; }
+      .modal { display:none; position:fixed; inset:0; z-index:50; background:rgba(14,25,19,.72); padding:1rem; align-items:center; justify-content:center; }
+      .modal.open { display:flex; }
+      .modal-card { width:min(790px,100%); max-height:92vh; overflow:auto; background:var(--paper); display:grid; grid-template-columns:1fr 1fr; position:relative; }
+      .modal-card img { width:100%; height:100%; min-height:360px; object-fit:cover; }
+      .modal-content { padding:3rem 2rem; }
+      .modal-close { position:absolute; right:12px; top:12px; width:34px; height:34px; border:0; border-radius:50%; cursor:pointer; background:var(--paper); z-index:1; font-size:1.1rem; }
+      .modal-content h3 { font-family:'Playfair Display',serif; font-size:2.25rem; line-height:1; margin:.55rem 0 .8rem; letter-spacing:-.055em; }
+      .modal-content p { color:var(--muted); font-size:.85rem; }
+      .spec-list { margin:1.4rem 0; padding:0; list-style:none; border-top:1px solid var(--line); }
+      .spec-list li { padding:.6rem 0; border-bottom:1px solid var(--line); font-size:.75rem; }
+      .spec-list b { display:inline-block; width:106px; color:var(--moss); }
+      @media (max-width:850px) { .nav-links { display:none; position:absolute; top:76px; left:0; right:0; padding:1rem 1.25rem 1.5rem; background:var(--cream); border-bottom:1px solid var(--line); flex-direction:column; align-items:stretch; } .nav-links.open { display:flex; } .menu-toggle { display:block; } .hero,.store,.contact { grid-template-columns:1fr; } .hero { padding-top:2rem; gap:2rem; } .hero-visual { height:440px; } .hero-image { width:88%; } .product-grid { grid-template-columns:repeat(2,1fr); } .category-grid { grid-template-columns:repeat(2,1fr); } .store { gap:2.5rem; } .store-media { min-height:410px; } }
+      @media (max-width:560px) { .topbar span:last-child { display:none; } .topbar { justify-content:center; } section { padding-top:4.5rem; padding-bottom:4.5rem; } .hero { min-height:auto; } h1 { font-size:3.3rem; } .trust-row { gap:1rem; flex-wrap:wrap; } .hero-visual { height:355px; } .hero-note { left:0; bottom:10px; } .hero-stamp { width:93px; height:93px; font-size:.54rem; } .hero-stamp span { font-size:1.25rem; } .section-head,.catalogue-tools { display:block; } .section-head p { margin-top:1rem; } .search { width:100%; margin-top:1rem; } .category-grid { grid-template-columns:1fr; } .category { min-height:210px; } .product-grid { gap:.7rem; } .product-image { height:160px; } .product-info { padding:.75rem; } .product-info h3 { font-size:1.12rem; } .store { padding-top:4.5rem; padding-bottom:4.5rem; } .store-media { min-height:320px; } .store-media .main-photo { height:300px; } .map-card { width:210px; } .service-grid { grid-template-columns:1fr; } .contact { gap:2.5rem; } .form-row { grid-template-columns:1fr; gap:0; } .footer-top,.footer-bottom { display:block; } .footer-links { margin-top:2rem; gap:2rem; } .footer-bottom span { display:block; margin-top:.5rem; } .modal-card { grid-template-columns:1fr; } .modal-card img { min-height:245px; height:245px; } .modal-content { padding:2rem 1.3rem; } }
+    </style>
+  </head>
+  <body>
+    <div class="topbar"><span>Visite-nos em Maputo · Seg–Sáb, 08:00–18:00</span><span>Atendimento rápido pelo WhatsApp</span></div>
+    <header class="site-header" id="inicio">
+      <nav class="nav">
+        <a class="brand" href="#inicio" aria-label="Casa Lume — início"><span class="brand-mark">L</span>Casa Lume</a>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+        <div class="nav-links">
+          <a href="#produtos">Produtos</a><a href="#loja">A nossa loja</a><a href="#contactos">Contactos</a>
+          <a class="nav-cta" target="_blank" rel="noreferrer" href="https://wa.me/258840000000?text=Olá%20Casa%20Lume%2C%20gostaria%20de%20saber%20mais.">Falar connosco ↗</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Mobiliário · Tecnologia · Detalhes</div>
+          <h1>Peças para <em>viver</em> bem, todos os dias.</h1>
+          <p>Na Casa Lume reunimos mobiliário, equipamentos eletrónicos e acessórios escolhidos para fazer a sua casa ou o seu negócio funcionar com mais beleza.</p>
+          <div class="hero-actions"><a class="button" href="#produtos">Explorar o catálogo <span>↓</span></a><a class="button outline" href="#loja">Visite a nossa loja</a></div>
+          <div class="trust-row"><div><b>Seleção cuidada</b><span>Para casa & escritório</span></div><div><b>Pronto a ver</b><span>Confirme na loja</span></div><div><b>Ajuda humana</b><span>Via WhatsApp</span></div></div>
+        </div>
+        <div class="hero-visual">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85" alt="Sala elegante com sofá e mesa de centro" />
+          <div class="hero-stamp">Ideias para<span>o seu espaço</span>desde 2026</div>
+          <div class="hero-note"><strong>Um showroom para explorar</strong>Toque, compare e encontre a peça certa.</div>
+        </div>
+      </section>
+      <div class="marquee" aria-hidden="true"><div class="marquee-track">Mobiliário pensado para si <i>✦</i> Tecnologia que acompanha o seu ritmo <i>✦</i> Detalhes que completam o espaço <i>✦</i> Mobiliário pensado para si <i>✦</i> Tecnologia que acompanha o seu ritmo <i>✦</i> Detalhes que completam o espaço <i>✦</i></div></div>
+      <section class="categories" id="categorias">
+        <div class="section-head"><div><div class="eyebrow">Por onde começar</div><h2>Descubra por ambiente.</h2></div><p>Explore uma seleção construída para diferentes momentos: do conforto da sala à produtividade do escritório.</p></div>
+        <div class="category-grid">
+          <a class="category" href="#produtos" data-category-link="mobilia"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80" alt="Mobiliário de sala" /><div><h3>Mobiliário</h3><span>Sofás · camas · mesas · armários</span></div></a>
+          <a class="category" href="#produtos" data-category-link="tecnologia"><img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80" alt="Espaço de trabalho com computador" /><div><h3>Tecnologia</h3><span>Computadores · monitores · áudio</span></div></a>
+          <a class="category" href="#produtos" data-category-link="acessorios"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Acessórios de decoração" /><div><h3>Acessórios</h3><span>Organização · iluminação · detalhes</span></div></a>
+        </div>
+      </section>
+      <section class="catalogue" id="produtos">
+        <div class="section-head"><div><div class="eyebrow">No nosso catálogo</div><h2>Encontre a peça certa.</h2></div><p>Os artigos estão disponíveis para consulta. Fale connosco para confirmar existências e opções.</p></div>
+        <div class="catalogue-tools"><div class="filters" aria-label="Filtros de produto"><button class="filter active" data-filter="todos">Todos</button><button class="filter" data-filter="mobilia">Mobiliário</button><button class="filter" data-filter="tecnologia">Tecnologia</button><button class="filter" data-filter="acessorios">Acessórios</button></div><label class="search"><input id="search" type="search" aria-label="Pesquisar produtos" placeholder="Pesquisar produto" /></label></div>
+        <div class="product-grid" id="productGrid"></div>
+        <a class="button outline view-all" href="https://wa.me/258840000000?text=Olá%20Casa%20Lume%2C%20quero%20ver%20mais%20opções%20do%20catálogo." target="_blank" rel="noreferrer">Não encontrou? Fale connosco ↗</a>
+      </section>
+      <section class="store" id="loja">
+        <div class="store-copy"><div class="eyebrow">A nossa loja</div><h2>Venha ver tudo de perto.</h2><p>Fotografias ajudam, mas alguns detalhes merecem ser sentidos. No nosso showroom pode experimentar materiais, dimensões e combinações com apoio da nossa equipa.</p><div class="store-details"><div class="detail"><b>Morada</b><span>Av. das Acácias, 125<br />Maputo, Moçambique</span></div><div class="detail"><b>Horário</b><span>Segunda a Sexta · 08:00–18:00<br />Sábado · 09:00–14:00</span></div><div class="detail"><b>Contacto</b><span>+258 84 000 0000<br />ola@casalume.co.mz</span></div></div><a class="button light" style="margin-top:2rem" href="#contactos">Pedir informações</a></div>
+        <div class="store-media"><img class="main-photo" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" alt="Interior de showroom de mobiliário" /><div class="map-card"><div class="map-graphic"><span class="pin">●</span></div><strong>Casa Lume, Maputo</strong><span>Av. das Acácias, 125 · Como chegar ↗</span></div></div>
+      </section>
+      <section class="services"><div class="section-head"><div><div class="eyebrow">Uma compra mais simples</div><h2>Estamos consigo na escolha.</h2></div></div><div class="service-grid"><div class="service"><div class="service-icon">◌</div><h3>Escolha orientada</h3><p>Ajuda para comparar materiais, medidas e soluções adequadas ao seu espaço.</p></div><div class="service"><div class="service-icon">⌁</div><h3>Consulta rápida</h3><p>Pergunte pelo WhatsApp sobre referências, disponibilidade e características.</p></div><div class="service"><div class="service-icon">↗</div><h3>Visita ao showroom</h3><p>Veja os produtos presencialmente e decida com toda a confiança.</p></div></div></section>
+      <section class="contact" id="contactos"><div class="contact-intro"><div class="eyebrow">Contactos</div><h2>Vamos encontrar o que procura.</h2><p>Envie-nos uma mensagem com a sua ideia ou a referência do produto. Respondemos com todo o gosto.</p><div class="contact-channels"><a target="_blank" rel="noreferrer" href="https://wa.me/258840000000?text=Olá%20Casa%20Lume%2C%20gostaria%20de%20falar%20com%20a%20equipa.">WhatsApp <span>+258 84 000 0000 ↗</span></a><a href="tel:+258840000000">Telefone <span>+258 84 000 0000 ↗</span></a><a href="mailto:ola@casalume.co.mz">E-mail <span>ola@casalume.co.mz ↗</span></a><a href="#inicio">Instagram <span>@casalume.mz ↗</span></a></div></div>
+        <form class="contact-form" id="contactForm"><div class="form-row"><label>O seu nome<input required name="nome" placeholder="Como prefere ser chamado?" /></label><label>Telefone / e-mail<input required name="contacto" placeholder="Para lhe respondermos" /></label></div><label>Em que podemos ajudar?<textarea required name="mensagem" placeholder="Ex.: Procuro uma cadeira executiva para o meu escritório."></textarea></label><button class="button" type="submit">Enviar mensagem <span>→</span></button><p class="form-status" id="formStatus" role="status"></p></form>
+      </section>
+    </main>
+    <footer><div class="footer-top"><div><a class="brand" href="#inicio"><span class="brand-mark">L</span>Casa Lume</a><p class="footer-copy">Mobiliário, tecnologia e detalhes para dar forma aos seus melhores espaços.</p></div><div class="footer-links"><div><b>Explorar</b><a href="#produtos">Produtos</a><a href="#loja">A nossa loja</a><a href="#contactos">Contactos</a></div><div><b>Contacto</b><a href="tel:+258840000000">+258 84 000 0000</a><a href="mailto:ola@casalume.co.mz">ola@casalume.co.mz</a></div></div></div><div class="footer-bottom"><span>© 2026 Casa Lume. Todos os direitos reservados.</span><span>Dados de contacto demonstrativos — personalize antes de publicar.</span></div></footer>
+    <a class="whatsapp-float" target="_blank" rel="noreferrer" href="https://wa.me/258840000000?text=Olá%20Casa%20Lume%2C%20preciso%20de%20ajuda.">WA</a>
+    <div class="modal" id="productModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><button class="modal-close" aria-label="Fechar">×</button><img id="modalImage" src="" alt="" /><div class="modal-content"><span class="product-code" id="modalCode"></span><h3 id="modalTitle"></h3><p id="modalDescription"></p><ul class="spec-list" id="modalSpecs"></ul><p class="availability">Disponível na nossa loja</p><a class="button" id="modalWhatsApp" target="_blank" rel="noreferrer">Consultar pelo WhatsApp ↗</a></div></div></div>
+    <script>
+      const products=[
+        {name:'Cadeira Executiva',code:'MOB-025',category:'mobilia',label:'Mobiliário',image:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80',description:'Cadeira para escritório com apoio lombar e braços ajustáveis.',specs:[['Tipo','Executiva'],['Material','Tecido e estrutura metálica'],['Ideal para','Escritório']],},
+        {name:'Sofá Nómada',code:'MOB-041',category:'mobilia',label:'Mobiliário',image:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80',description:'Sofá confortável de linhas generosas para criar uma sala acolhedora.',specs:[['Tipo','3 lugares'],['Material','Tecido'],['Ideal para','Sala de estar']]},
+        {name:'Mesa Essencial',code:'MOB-017',category:'mobilia',label:'Mobiliário',image:'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=700&q=80',description:'Mesa de refeições com desenho simples e presença natural.',specs:[['Tipo','Mesa de jantar'],['Material','Madeira'],['Ideal para','6 lugares']]},
+        {name:'Armário Linha',code:'MOB-052',category:'mobilia',label:'Mobiliário',image:'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80',description:'Solução de arrumação versátil para quartos ou áreas de serviço.',specs:[['Tipo','Armário'],['Material','MDF laminado'],['Ideal para','Arrumação']]},
+        {name:'Monitor Vision',code:'TEC-012',category:'tecnologia',label:'Tecnologia',image:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=700&q=80',description:'Monitor para uma secretária mais produtiva e organizada.',specs:[['Tipo','Monitor'],['Conexão','HDMI'],['Ideal para','Trabalho e estudo']]},
+        {name:'Computador Studio',code:'TEC-035',category:'tecnologia',label:'Tecnologia',image:'https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=700&q=80',description:'Computador pensado para o ritmo de trabalho diário.',specs:[['Tipo','Desktop'],['Uso','Profissional'],['Ideal para','Escritório']]},
+        {name:'Projetor Focus',code:'TEC-061',category:'tecnologia',label:'Tecnologia',image:'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=700&q=80',description:'Transforme reuniões e momentos de cinema em experiências maiores.',specs:[['Tipo','Projetor'],['Uso','Apresentação e cinema'],['Ideal para','Salas e eventos']]},
+        {name:'Candeeiro Arco',code:'ACE-009',category:'acessorios',label:'Acessórios',image:'https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=700&q=80',description:'Luz ambiente para dar mais personalidade ao seu canto favorito.',specs:[['Tipo','Iluminação'],['Estilo','Contemporâneo'],['Ideal para','Sala e quarto']]}
+      ];
+      const grid=document.getElementById('productGrid'), search=document.getElementById('search'); let currentFilter='todos';
+      function renderProducts(){ const term=search.value.toLowerCase().trim(); const list=products.filter(p=>(currentFilter==='todos'||p.category===currentFilter)&&`${p.name} ${p.code} ${p.label}`.toLowerCase().includes(term)); grid.innerHTML=list.map((p,i)=>`<article class="product-card"><div class="product-image"><img src="${p.image}" alt="${p.name}"/><span class="product-tag">${p.label}</span><button class="quick-view" data-index="${products.indexOf(p)}" aria-label="Ver ${p.name}">+</button></div><div class="product-info"><span class="product-code">${p.code}</span><h3>${p.name}</h3><span class="availability">Disponível na nossa loja</span></div></article>`).join('')||'<p style="grid-column:1/-1;color:var(--muted)">Não encontrámos produtos com essa pesquisa. Fale connosco pelo WhatsApp — podemos ajudar.</p>'; }
+      document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{currentFilter=btn.dataset.filter;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===btn));renderProducts()}));search.addEventListener('input',renderProducts); renderProducts();
+      document.querySelectorAll('[data-category-link]').forEach(link=>link.addEventListener('click',()=>{currentFilter=link.dataset.categoryLink;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===currentFilter));renderProducts()}));
+      const modal=document.getElementById('productModal'); function openProduct(i){const p=products[i];document.getElementById('modalImage').src=p.image;document.getElementById('modalImage').alt=p.name;document.getElementById('modalCode').textContent=p.code;document.getElementById('modalTitle').textContent=p.name;document.getElementById('modalDescription').textContent=p.description;document.getElementById('modalSpecs').innerHTML=p.specs.map(s=>`<li><b>${s[0]}</b>${s[1]}</li>`).join('');document.getElementById('modalWhatsApp').href=`https://wa.me/258840000000?text=${encodeURIComponent('Olá Casa Lume, gostaria de consultar o produto '+p.name+' ('+p.code+').')}`;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+      grid.addEventListener('click',e=>{const btn=e.target.closest('.quick-view');if(btn)openProduct(btn.dataset.index)}); function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}document.querySelector('.modal-close').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+      document.querySelector('.menu-toggle').addEventListener('click',e=>{const open=document.querySelector('.nav-links').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',open);e.currentTarget.textContent=open?'×':'☰'});document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav-links').classList.remove('open')));window.addEventListener('scroll',()=>document.querySelector('.site-header').classList.toggle('scrolled',scrollY>12));
+      document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.currentTarget);const message=`Olá Casa Lume, sou ${f.get('nome')}. ${f.get('mensagem')} Contacto: ${f.get('contacto')}`;document.getElementById('formStatus').textContent='A abrir o WhatsApp para enviar a sua mensagem…';window.open('https://wa.me/258840000000?text='+encodeURIComponent(message),'_blank')});
+    </script>
+  </body>
+</html>
+
